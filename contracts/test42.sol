@@ -82,7 +82,7 @@ contract InternalFunctionFlow {
 
     uint256 public totalDeposits;
 
-    
+    /*
     =====================================================
     EXTERNAL ENTRY FUNCTION
     =====================================================
@@ -121,6 +121,7 @@ contract InternalFunctionFlow {
     INTERNAL VALIDATION FUNCTION
     =====================================================
     
+
     function _validateAmount(
         uint256 _amount
     )
@@ -155,7 +156,7 @@ contract InternalFunctionFlow {
         internal
     {
 
-        
+        /*
             Internal storage update.
         
         balances[_user] += _amount;
@@ -176,7 +177,7 @@ contract InternalFunctionFlow {
     {
 
         /*
-         Bonus = 10%
+            Bonus = 10%
         
         return (_amount * 10) / 100;
     }
@@ -186,6 +187,7 @@ contract InternalFunctionFlow {
     EXTERNAL FUNCTION USING INTERNAL HELPER
     =====================================================
     
+
     function depositWithBonus(
         uint256 _amount
     )
@@ -193,7 +195,7 @@ contract InternalFunctionFlow {
     {
 
         /*
-            Internal validation call.
+         Internal validation call.
         
         _validateAmount(_amount);
 
