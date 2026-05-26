@@ -149,7 +149,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/test42.sol": "PremiumVault"
+			"test42.sol": "PremiumVault"
 		},
 		"evmVersion": "osaka",
 		"libraries": {},
@@ -163,12 +163,12 @@
 		"remappings": []
 	},
 	"sources": {
-		"contracts/test42.sol": {
-			"keccak256": "0xc667ea9107a900c36f60c907255c20873ee874b69f15434f04e9efa7a0bea126",
+		"test42.sol": {
+			"keccak256": "0x30aa0e1cf06dcfb9f4690414bf5b06e75224ab1c8404978d88c51c92c2bd7df1",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://c42c6c9a698fb638ce89b3b148c28e0dc74ff31775ebb39458f5fa12798df3ed",
-				"dweb:/ipfs/QmPAzNNfLWNA4CFDgeaAH5XpAMgyYgTBW7Wch1r9MPcmC3"
+				"bzz-raw://ea4dfb05d18178b29bab26eee5c1a0db3ecf6936c579a9faff73d3d8c908981c",
+				"dweb:/ipfs/QmVWXMKymYhS1ESsZP3KKUcJuP293JPqAFPnUwnraEoi8p"
 			]
 		}
 	},

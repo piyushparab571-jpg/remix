@@ -82,7 +82,7 @@ contract InternalFunctionFlow {
 
     uint256 public totalDeposits;
 
-    /*
+    
     =====================================================
     EXTERNAL ENTRY FUNCTION
     =====================================================
@@ -195,7 +195,7 @@ contract InternalFunctionFlow {
     {
 
         /*
-         Internal validation call.
+            Internal validation call.
         
         _validateAmount(_amount);
 
@@ -611,6 +611,7 @@ These helpers can then be reused throughout the parent contract and inherited ch
 
 Patched Code
 */
+
 contract InternalFunctionFlow {
 
     /*
