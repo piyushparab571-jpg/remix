@@ -6,9 +6,47 @@
 	"output": {
 		"abi": [
 			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "AmountExceedsLimit",
+				"type": "error"
+			},
+			{
 				"inputs": [],
-				"stateMutability": "nonpayable",
-				"type": "constructor"
+				"name": "CorruptedState",
+				"type": "error"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "requested",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "available",
+						"type": "uint256"
+					}
+				],
+				"name": "InsufficientBalance",
+				"type": "error"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "number",
+						"type": "uint256"
+					}
+				],
+				"name": "OddNumberRejected",
+				"type": "error"
 			},
 			{
 				"inputs": [
@@ -43,16 +81,41 @@
 				"type": "function"
 			},
 			{
-				"inputs": [],
-				"name": "owner",
-				"outputs": [
+				"inputs": [
 					{
-						"internalType": "address",
-						"name": "",
-						"type": "address"
+						"internalType": "uint256",
+						"name": "_number",
+						"type": "uint256"
 					}
 				],
-				"stateMutability": "view",
+				"name": "onlyEven",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "pure",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_number",
+						"type": "uint256"
+					}
+				],
+				"name": "onlyEvenRequire",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "pure",
 				"type": "function"
 			},
 			{
@@ -66,6 +129,19 @@
 					}
 				],
 				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_amount",
+						"type": "uint256"
+					}
+				],
+				"name": "withdraw",
+				"outputs": [],
+				"stateMutability": "nonpayable",
 				"type": "function"
 			}
 		],
@@ -82,7 +158,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"test46.sol": "ManualRevertExample"
+			"test47.sol": "ManualRevertExample"
 		},
 		"evmVersion": "osaka",
 		"libraries": {},
@@ -96,12 +172,12 @@
 		"remappings": []
 	},
 	"sources": {
-		"test46.sol": {
-			"keccak256": "0x21a30aeb6a82bde647087ced5ba5257e631a17640fe760fd17a52ad59f685991",
+		"test47.sol": {
+			"keccak256": "0xd27c9fccddf974bb84c2eea310c00539aac2cb73d173968d9a50cba4acd55cb3",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://98514b51e0a0ae05509e2b73ee7098fe63894a3d8b6c878327909e2b6037982b",
-				"dweb:/ipfs/QmTQkmNPeDTjQTVjgFroAsTzNcyE2rc4whvXGHFufwRimk"
+				"bzz-raw://1828dadd18a1cc02099fd99cdf6c237e18261435782059f70aa01f2dae69efe6",
+				"dweb:/ipfs/QmajzK51GzVFrA5CEaTphamZNkSEDYJRwfn8uG4QpySdVq"
 			]
 		}
 	},
