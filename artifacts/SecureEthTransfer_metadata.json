@@ -25,14 +25,8 @@
 				"type": "function"
 			},
 			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "",
-						"type": "address"
-					}
-				],
-				"name": "bonuses",
+				"inputs": [],
+				"name": "contractBalance",
 				"outputs": [
 					{
 						"internalType": "uint256",
@@ -41,45 +35,13 @@
 					}
 				],
 				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "uint256",
-						"name": "_amount",
-						"type": "uint256"
-					}
-				],
-				"name": "deposit",
-				"outputs": [],
-				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
 				"inputs": [],
-				"name": "totalDeposits",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "uint256",
-						"name": "_amount",
-						"type": "uint256"
-					}
-				],
-				"name": "vulnerableReward",
+				"name": "deposit",
 				"outputs": [],
-				"stateMutability": "nonpayable",
+				"stateMutability": "payable",
 				"type": "function"
 			},
 			{
@@ -109,7 +71,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"test50.sol": "DebugExecutionTracing"
+			"test52.sol": "SecureEthTransfer"
 		},
 		"evmVersion": "osaka",
 		"libraries": {},
@@ -123,12 +85,12 @@
 		"remappings": []
 	},
 	"sources": {
-		"test50.sol": {
-			"keccak256": "0x7ac373ad5df2cca5f8ad00d91963acb3b87bb290322c0ad490502f4894b11ef2",
+		"test52.sol": {
+			"keccak256": "0xb566e5200fa542705329297623c821dcd1b9b3e5a97a4844c31357a1756d0d76",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://79c3e737d42f785c5a4974eafff8755b8012c55ddb889c5be093643894cace39",
-				"dweb:/ipfs/Qmco5KBDMW3jFL85UBjdgHksXYAwdQEberBBawzkbano3N"
+				"bzz-raw://13ee36124fc8e0466575812a1e222ce8ec1881f11bd055f17bd4e10e128a0e75",
+				"dweb:/ipfs/QmVnDumUkFmFxNMV1sPmNFK8bmBZzR9jx9vezR3kFUykre"
 			]
 		}
 	},
