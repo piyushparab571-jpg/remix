@@ -199,7 +199,7 @@ contract ReorderLogicVulnerability {
     /*
     =====================================================
     BAD REWARD ORDER
-    ====================================================
+    =====================================================
     
 
     mapping(address => uint256) public rewards;
@@ -556,388 +556,195 @@ IMPORTANT CONCEPTS LEARNED
 =========================================================
 */
 /*
-# Audit Report
+Audit report
+Title
+Reentrancy Vulnerability via incorrect External Token Transfer Ordering
 
-## Title
+Severity: High
 
-Improper Execution Order Enables Reentrancy and Stale-State Vulnerabilities
+Location
+Contract:  RecorderLogicVulnerability
+Function: vulnerableTokenWithdraw()
 
-## Severity
+Vulnerable Description
+The vulnerableTokenWithdraw() function performs token transfer
+before updating internal accounting state variables.
 
-High
+This violates the checks-Effects-interactions (CEI) security pattern and creates a 
+reentrancy vulnerability window.
+Because state updates occure after the external interaction, a malicious contract
+may reenter the function multiple times before balances are reduced.
 
-## Reason
-
-Critical logic executes in an unsafe order, allowing external interactions before state updates and causing stale-state calculations.
-
----
-
-## Location
-
-* **Contract:** `ReorderLogicVulnerability`
-* **Functions:**
-
-  * `vulnerableWithdraw()`
-  * `badRewardUpdate()`
-
----
-
-## Vulnerability Description
-
-The contract intentionally demonstrates dangerous execution ordering patterns.
-
-The primary issue exists in `vulnerableWithdraw()` where an external ETH transfer occurs before internal balances are updated.
-
-```solidity
-payable(msg.sender).call{value: _amount}("");
-
-balances[msg.sender] -= _amount;
-```
-
-This exposes a reentrancy window where an attacker can repeatedly re-enter the function before the balance reduction executes.
-
-A secondary issue exists in `badRewardUpdate()` where rewards are calculated before balances are updated.
-
-```solidity
-rewards[msg.sender] =
-    balances[msg.sender] / 10;
-
-balances[msg.sender] += _deposit;
-```
-
-This causes stale-state reads and incorrect reward accounting.
-
----
-
-## Impact
-
-### Reentrancy Impact
-
-An attacker may:
-
-* repeatedly withdraw funds
-* drain contract ETH
-* corrupt accounting state
-* bypass intended balance restrictions
-* break protocol invariants
-
-### Reward Accounting Impact
-
-Incorrect execution ordering may:
-
-* generate stale rewards
-* produce inaccurate accounting
-* distribute incorrect incentives
-* break reward logic assumptions
-
-If integrated into real-world DeFi systems such as:
-
-* staking protocols
-* vault systems
-* lending markets
-* AMMs
-* reward distribution engines
-
-the impact could become severe.
-
----
-
-## Proof of Concept
-
-## Vulnerable Withdraw Logic
-
-```solidity
-function vulnerableWithdraw(
+Vulnerable Code
+function vulnerableTokenWithdraw(
     uint256 _amount
 )
     external
 {
-
     require(
         balances[msg.sender] >= _amount,
         "Insufficient balance"
     );
-
-    /*
-     EXTERNAL CALL FIRST
     
-    payable(msg.sender).call{
-        value: _amount
-    }("");
-
-    /*
-        STATE UPDATED TOO LATE
+     // DANGEROUS:
+    //External token transfer FIRST
+    
+    token.transfer(
+        msg.sender,
+        _amount 
+    );
+    
+    //STATE UPDATED TOO LATE
     
     balances[msg.sender] -= _amount;
-
-    totalBalance -= _amount;
+    tottalBalance -= _amount;
 }
-```
 
----
+Impact
 
-## Reentrancy Attack Scenario
+An attacker can rpeatedly reenter the withdrawl logic before balance
+reduction occurs.
 
-### Step 1
+Potential consequences include:
+1.repeated unauthorized withdrawals
+2.draining protocol token reserves
+3.broken accounting invariants
+4.protocol insolvency
+if integrated into production DeFi systems. this vulnerability could lead to
+complete fund loss.
 
-Attacker deposits ETH.
+Root Cause
+The external token interaction executes before internal state updates.
+Vulnerable ordering:
+1. CHECK
+2. EXTERNAL INTERACTION
+3. STATE UPDATE
+During the external call, attacker-controlled code may execute and reenter the
+function while balances remain unchanged
 
-```solidity
-safeDeposit();
-```
+Prrof of Concept
+Step 1 -User Deposits
+Attacker deposites tokens.
+State:
+balances[attacker] = 100
+Stepn 2 -Attacker Calls Vulnerable withdraw
+vulnerableToken Withdraw(100)
+Balances validation succeeds.
+Step 3 -External Token Transfer Executes
+token.transfer(attacker, 100)
+Attacker contract receives tokens.
+Its fallback/hook triggers malicious logic.
+Step 4-Reentrancy Occurs
+Attacker reenters:
+vulnerableTokenWithdraw(100)
+Because balaces were not yet reduced:
+balances[attacker] == 100
+still eveluates true.
+Step 5-Multiple Withdrawals Occur
+The attacker repeatedly drains protocol funds before the original execution
+updates storage.
 
----
+Vulnerability Analysis
+Why External Calls Are Dangerous
+External token transfers may:
+1. trigger fallback logic
+2.invoke hooks
+3. call malicious contracts
+4. reenter prtocol functions 
+This is especially dangerous when state has not yet been updated.
 
-### Step 2
+Core Security Issue
+Temporary inconsistent state becomes externally observable.
+At this moment:
+balances[msg.sender]
+still contains the old value.
+Attackers exploit this incnsistency
 
-Attacker calls:
+Violated Security Principle
+The function violates:
+Checks ---> Effects ---> Interactions
+correct order should always be:
+1. CHECKS
+2. EFFECTS
+3. INTERACTIONS
 
-```solidity
-vulnerableWithdraw(1 ether);
-```
-
----
-
-### Step 3
-
-During ETH reception, attacker fallback executes:
-
-```solidity
-fallback() external payable {
-    target.vulnerableWithdraw(1 ether);
-}
-```
-
----
-
-### Step 4
-
-Because balances are not yet reduced, multiple withdrawals succeed.
-
----
-
-## Stale Reward Logic
-
-```solidity
-function badRewardUpdate(
-    uint256 _deposit
-)
-    external
-{
-
-    rewards[msg.sender] =
-        balances[msg.sender] / 10;
-
-    balances[msg.sender] += _deposit;
-}
-```
-
----
-
-## Stale-State Example
-
-### Initial State
-
-```solidity
-balances[Alice] = 100;
-```
-
----
-
-### Call
-
-```solidity
-badRewardUpdate(50);
-```
-
----
-
-### Result
-
-```solidity
-Reward = 10
-Balance = 150
-```
-
-Expected reward should have been:
-
-```solidity
-150 / 10 = 15
-```
-
----
-
-## Root Cause
-
-The vulnerabilities occur because:
-
-* external interactions execute before state updates
-* contract violates CEI principles
-* stale values are used in calculations
-* temporary inconsistent state becomes externally observable
-* execution ordering does not preserve invariants
-
----
-
-## Recommendation
-
-Implement the Checks-Effects-Interactions (CEI) pattern consistently.
-
-### Recommended Order
-
-1. Checks
-2. Effects
-3. Interactions
-
+Recommendation Update all internal accounting before performing external interactions
 Additionally:
+1. use nonReentrant
+2. validate token transfer success
+3. minimize external call exposure
 
-* avoid stale-state calculations
-* update balances before dependent logic
-* use `nonReentrant` protection where appropriate
-* validate all accounting invariants
+Patched Code
 
----
-
-# Patched Code
-*/
-contract ReorderLogicFixed {
-
-    /*
-        USER BALANCES
-    */
-    mapping(address => uint256) public balances;
-
-    /*
-        TOTAL SYSTEM BALANCE
-    */
-    uint256 public totalBalance;
-
-    /*
-        REWARD TRACKER
-    */
-    mapping(address => uint256) public rewards;
-
-    /*
-        REENTRANCY LOCK
-    */
-    bool private locked;
-
-    /*
-    =====================================================
-    NON-REENTRANT MODIFIER
-    =====================================================
-    */
-
-    modifier nonReentrant() {
-
-        require(
-            !locked,
-            "Reentrancy detected"
-        );
-
-        locked = true;
-
-        _;
-
-        locked = false;
-    }
-
-    /*
-    =====================================================
-    SAFE DEPOSIT
-    =====================================================
-    */
-
-    function safeDeposit()
-        external
-        payable
-    {
-
-        require(
-            msg.value > 0,
-            "No ETH sent"
-        );
-
-        balances[msg.sender] += msg.value;
-
-        totalBalance += msg.value;
-    }
-
-    /*
-    =====================================================
-    FIXED WITHDRAW
-    =====================================================
-
-    Uses:
-    CHECKS -> EFFECTS -> INTERACTIONS
-    =====================================================
-    */
-
-    function safeWithdraw(
-        uint256 _amount
-    )
-        external
-        nonReentrant
-    {
-
-        /*
-            CHECKS
-        */
-        require(
-            balances[msg.sender] >= _amount,
-            "Insufficient balance"
-        );
-
-        /*
-            EFFECTS FIRST
-        */
-        balances[msg.sender] -= _amount;
-
-        totalBalance -= _amount;
-
-        /*
-            INTERACTION LAST
-        */
-        (bool success, ) =
-            payable(msg.sender).call{
-                value: _amount
-            }("");
-
-        require(
-            success,
-            "Transfer failed"
-        );
-    }
-
-    /*
-    =====================================================
-    FIXED REWARD UPDATE
-    =====================================================
-    */
-
-    function safeRewardUpdate(
-        uint256 _deposit
-    )
-        external
-    {
-
-        /*
-            UPDATE BALANCE FIRST
-        */
-        balances[msg.sender] += _deposit;
-
-        /*
-            CALCULATE REWARD
-            USING UPDATED STATE
-        */
-        rewards[msg.sender] =
-            balances[msg.sender] / 10;
-    }
-
-    /*
-        RECEIVE ETHER
-    */
-    receive() external payable {}
+*/ 
+interface IERC20 { 
+    function transfer( 
+        address to, 
+        uint256 amount 
+    ) external 
+    returns (bool); 
+} contract SafeTokenWithdraw { 
+    IERC20 public token; 
+    mapping(address => uint256) 
+       public balances; 
+       uint256 public totalBalance; 
+       /* 
+       REENTRANCY LOCK 
+       */ 
+       bool private locked;
+        constructor(address _token) { 
+            token = IERC20(_token); 
+            }
+             /* 
+             ===================================================== 
+             NONREENTRANT MODIFIER 
+             ===================================================== 
+             */ 
+             modifier nonReentrant() { 
+                require( 
+                    !locked, 
+                    "Reentrancy blocked"
+                     ); 
+                     locked = true;
+                      _; 
+                      locked = false; 
+                      } 
+                      /* 
+                      ===================================================== 
+                      SAFE TOKEN WITHDRAW
+                    ===================================================== 
+                    Uses: 
+                    Checks -> Effects -> Interactions 
+                    */ 
+                    function safeTokenWithdraw( 
+                        uint256 _amount 
+                    ) 
+                    external 
+                    nonReentrant 
+                    { 
+                        /* 
+                        CHECKS 
+                        */ 
+                        require( 
+                            balances[msg.sender] >= _amount, 
+                            "Insufficient balance" 
+                            );
+                             /* 
+                             EFFECTS 
+                             */
+                              balances[msg.sender] -= _amount; 
+                              totalBalance -= _amount; 
+                              /* 
+                              INTERACTIONS
+                               */ 
+                             bool success =
+            token.transfer( 
+                msg.sender, 
+                _amount 
+             ); 
+         require( 
+             success, 
+            "Transfer failed" 
+         );
+     } 
 }
-
-
