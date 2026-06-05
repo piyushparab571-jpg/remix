@@ -1,0 +1,77 @@
+{
+	"compiler": {
+		"version": "0.8.34+commit.80d5c536"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_contractC",
+						"type": "address"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [],
+				"name": "callFinalStep",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "contractC",
+				"outputs": [
+					{
+						"internalType": "contract ContractC",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"test62.sol": "SecureContractB"
+		},
+		"evmVersion": "osaka",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"test62.sol": {
+			"keccak256": "0x989f13fa40de8dc753b4c2d001fd838b2d530e3f18af95a944ade28a7952478e",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://46d8fb4095026785f40fda577f43c587fa31e8fe6d5bcdaa515248424c68f7a7",
+				"dweb:/ipfs/QmSTtqEM6NijD9wuzafVgoxED3SvXDagNfUbYSXMKhF5U9"
+			]
+		}
+	},
+	"version": 1
+}
