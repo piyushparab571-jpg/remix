@@ -1,0 +1,60 @@
+{
+	"compiler": {
+		"version": "0.8.34+commit.80d5c536"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"name": "failFunction",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "successFunction",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"test60.sol": "IRejectETH"
+		},
+		"evmVersion": "osaka",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"test60.sol": {
+			"keccak256": "0xe19931e0482b45f6ffc499e71dd8039023234e7df1d8068c62ecb2c9cde6ce2b",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://b2ca0920aa91097d7d9792c9476ed3f6be8efb723807fec5f59ff4138f587904",
+				"dweb:/ipfs/QmdVHuH1Fnh7S99Vf1cMabMZ4ZxiXKqy5yxVAXPwu7fLXi"
+			]
+		}
+	},
+	"version": 1
+}

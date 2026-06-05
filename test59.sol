@@ -785,4 +785,3 @@ contract Rejector {
         );
     }
 }
-```
