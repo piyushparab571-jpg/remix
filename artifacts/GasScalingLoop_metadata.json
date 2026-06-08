@@ -6,8 +6,19 @@
 	"output": {
 		"abi": [
 			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_worker",
+						"type": "address"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
 				"inputs": [],
-				"name": "callCount",
+				"name": "finalSum",
 				"outputs": [
 					{
 						"internalType": "uint256",
@@ -20,9 +31,48 @@
 			},
 			{
 				"inputs": [],
-				"name": "doWork",
+				"name": "gasUsed",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "loop10000",
 				"outputs": [],
 				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "totalIterations",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "worker",
+				"outputs": [
+					{
+						"internalType": "contract ExternalWorker",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
 				"type": "function"
 			}
 		],
@@ -39,7 +89,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"test67.sol": "ExternalWorker"
+			"test67.sol": "GasScalingLoop"
 		},
 		"evmVersion": "osaka",
 		"libraries": {},
