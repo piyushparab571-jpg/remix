@@ -1,0 +1,66 @@
+{
+	"compiler": {
+		"version": "0.8.34+commit.80d5c536"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"name": "callCount",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "doWork",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"test66.sol": "ExternalWorker"
+		},
+		"evmVersion": "osaka",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"test66.sol": {
+			"keccak256": "0x2c32a1db848e978462066480aa7720ce886b3a42e4d52070a73846f528db70ba",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://68a514743a28853b115311005770426dfeb384e0c4eeaab72bdb366caecc0355",
+				"dweb:/ipfs/QmRnuhrtPJdSMx3EoXUYiLb33cHUkb33et6rMu99szVRMf"
+			]
+		}
+	},
+	"version": 1
+}
