@@ -9,6 +9,47 @@
 				"inputs": [
 					{
 						"internalType": "address",
+						"name": "_implementation",
+						"type": "address"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"stateMutability": "payable",
+				"type": "fallback"
+			},
+			{
+				"inputs": [],
+				"name": "admin",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "implementation",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
 						"name": "_owner",
 						"type": "address"
 					}
@@ -34,12 +75,12 @@
 			{
 				"inputs": [
 					{
-						"internalType": "uint256",
-						"name": "_value",
-						"type": "uint256"
+						"internalType": "address",
+						"name": "_newImplementation",
+						"type": "address"
 					}
 				],
-				"name": "setValue",
+				"name": "upgrade",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
@@ -71,7 +112,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"test83.sol": "LogicV1"
+			"test83.sol": "SimpleProxySafe"
 		},
 		"evmVersion": "osaka",
 		"libraries": {},
