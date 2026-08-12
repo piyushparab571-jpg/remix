@@ -134,5 +134,13 @@
         "file": "test75.sol"
       }
     }
+  },
+  "test76.sol": {
+    "__sources__": {
+      "test76.sol": {
+        "content": "// SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.20;\r\n\r\ncontract BeforeModifier {\r\n    uint public value;\r\n\r\n    modifier beforeFunction() {\r\n        value = 10;\r\n        _;\r\n    }\r\n\r\n    function test() public beforeFunction {\r\n        value = 20;\r\n    }\r\n}",
+        "file": "test76.sol"
+      }
+    }
   }
 }

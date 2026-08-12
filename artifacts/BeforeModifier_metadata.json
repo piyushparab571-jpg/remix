@@ -39,7 +39,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"test75.sol": "BeforeModifier"
+			"test76.sol": "BeforeModifier"
 		},
 		"evmVersion": "osaka",
 		"libraries": {},
@@ -53,7 +53,7 @@
 		"remappings": []
 	},
 	"sources": {
-		"test75.sol": {
+		"test76.sol": {
 			"keccak256": "0xdacef4272488c149609487a57f823895cf20a661b38a568df43d9d971b7bd785",
 			"license": "MIT",
 			"urls": [
