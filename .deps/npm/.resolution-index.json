@@ -74,8 +74,16 @@
   "test68.sol": {
     "__sources__": {
       "test68.sol": {
-        "content": "//SPDX-License-Identifier:MIT\r\npragma solidity ^0.8.20;\r\ncontract NestedStruct {\r\n    struct AddressInfo {\r\n        string city;\r\n        uint pincode;\r\n    }\r\n    struct User {\r\n        string name;\r\n        uint age;\r\n        AddressInfo addressInfo;\r\n    }\r\n    User public user;\r\n    function setUser() public {\r\n        user = User(\r\n            \"Piyush\",\r\n            18,\r\n            AddressInfo(\"Sawantwadi\", 400001)\r\n        )\r\n    \r\n\r\n    }\r\n}",
+        "content": "// SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.20;\r\n\r\ncontract NestedStruct {\r\n    struct AddressInfo {\r\n        string city;\r\n        uint pincode;\r\n    }\r\n\r\n    struct User {\r\n        string name;\r\n        uint age;\r\n        AddressInfo addressInfo;\r\n    }\r\n\r\n    User public user;\r\n\r\n    function setUser() public {\r\n        user = User(\r\n            \"Piyush\",\r\n            18,\r\n            AddressInfo(\"Mumbai\", 400001)\r\n        );\r\n    }\r\n}",
         "file": "test68.sol"
+      }
+    }
+  },
+  "test69.sol": {
+    "__sources__": {
+      "test69.sol": {
+        "content": "// SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.20;\r\n\r\ncontract ReplaceStruct {\r\n    struct User {\r\n        string name;\r\n        uint age;\r\n    }\r\n\r\n    User public user;\r\n\r\n    function setUser(string memory _name, uint _age) public {\r\n        user = User(_name, _age);\r\n    }\r\n}",
+        "file": "test69.sol"
       }
     }
   }

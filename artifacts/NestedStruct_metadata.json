@@ -1,0 +1,88 @@
+{
+	"compiler": {
+		"version": "0.8.34+commit.80d5c536"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"name": "setUser",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "user",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "age",
+						"type": "uint256"
+					},
+					{
+						"components": [
+							{
+								"internalType": "string",
+								"name": "city",
+								"type": "string"
+							},
+							{
+								"internalType": "uint256",
+								"name": "pincode",
+								"type": "uint256"
+							}
+						],
+						"internalType": "struct NestedStruct.AddressInfo",
+						"name": "addressInfo",
+						"type": "tuple"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"test68.sol": "NestedStruct"
+		},
+		"evmVersion": "osaka",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"test68.sol": {
+			"keccak256": "0xba0945e1210b253ef1db58d3dd5bf64ccf671ee3c0a59bb9c05489b73dece81a",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://f278032bf2546abe5b252d8a8ca699295d5d20fb1e9dfaaab22b4826016e965e",
+				"dweb:/ipfs/QmSxsdqXzVPNQB3qhbGUwhBi2jxF9TsGKaSV3gtb26tmA8"
+			]
+		}
+	},
+	"version": 1
+}
