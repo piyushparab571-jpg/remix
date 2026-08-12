@@ -30,5 +30,13 @@
         "file": "test62.sol"
       }
     }
+  },
+  "test63.sol": {
+    "__sources__": {
+      "test63.sol": {
+        "content": "//SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.20;\r\ncontract UpdateStruct {\r\n    struct Student {\r\n        string name;\r\n        uint age;\r\n        uint marks;\r\n    }\r\n    Student public student = Student(\"Piyush\", 18, 70);\r\n    function updateMarks(uint _marks) public {\r\n        student.marks = _marks;\r\n    }\r\n}",
+        "file": "test63.sol"
+      }
+    }
   }
 }
