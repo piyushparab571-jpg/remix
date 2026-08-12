@@ -54,5 +54,13 @@
         "file": "test65.sol"
       }
     }
+  },
+  "test66.sol": {
+    "__sources__": {
+      "test66.sol": {
+        "content": "// SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.20;\r\n\r\ncontract DefaultStruct {\r\n    struct User {\r\n        string name;\r\n        uint age;\r\n        bool active;\r\n    }\r\n\r\n    User public user;\r\n\r\n    function getUser()\r\n        public\r\n        view\r\n        returns (string memory, uint, bool)\r\n    {\r\n        return (user.name, user.age, user.active);\r\n    }\r\n}",
+        "file": "test66.sol"
+      }
+    }
   }
 }
