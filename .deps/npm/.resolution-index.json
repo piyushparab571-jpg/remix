@@ -46,5 +46,13 @@
         "file": "test64.sol"
       }
     }
+  },
+  "test65.sol": {
+    "__sources__": {
+      "test65.sol": {
+        "content": "// SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.20;\r\n\r\ncontract MultipleUsers {\r\n    struct User {\r\n        string name;\r\n        uint age;\r\n        bool registered;\r\n    }\r\n\r\n    mapping(address => User) public users;\r\n\r\n    function register(string memory _name, uint _age) public {\r\n        users[msg.sender] = User(_name, _age, true);\r\n    }\r\n}",
+        "file": "test65.sol"
+      }
+    }
   }
 }
