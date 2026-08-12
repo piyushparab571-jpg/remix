@@ -1,0 +1,76 @@
+{
+	"compiler": {
+		"version": "0.8.34+commit.80d5c536"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"name": "register",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "user",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "wallet",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "balance",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "registered",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"test62.sol": "SenderStruct"
+		},
+		"evmVersion": "osaka",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"test62.sol": {
+			"keccak256": "0x74e2d362c838bf1b7ea885c352893aedbbe05db1b257505d2c81e77f9f24681c",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://f04eaf4d3eac78f8d22a96831259b9977f910bd6966a32e937ff698433c6b0c4",
+				"dweb:/ipfs/QmbvJjd8bCvpvbnjKqqfpsDhDfd2v7VtbdsA7NsEfdXDq4"
+			]
+		}
+	},
+	"version": 1
+}

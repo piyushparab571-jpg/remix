@@ -22,5 +22,13 @@
         "file": "test61.sol"
       }
     }
+  },
+  "test62.sol": {
+    "__sources__": {
+      "test62.sol": {
+        "content": "//Store a struct for msg.sender---- Structured state\r\n// SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.20;\r\n\r\ncontract SenderStruct {\r\n    struct User {\r\n        address wallet;\r\n        uint balance;\r\n        bool registered;\r\n    }\r\n\r\n    User public user;\r\n\r\n    function register() public {\r\n        user = User(msg.sender, msg.sender.balance, true);\r\n    }\r\n}",
+        "file": "test62.sol"
+      }
+    }
   }
 }
