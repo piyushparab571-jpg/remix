@@ -38,5 +38,13 @@
         "file": "test63.sol"
       }
     }
+  },
+  "test64.sol": {
+    "__sources__": {
+      "test64.sol": {
+        "content": "// SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.20;\r\n\r\ncontract UserRecords {\r\n    struct User {\r\n        string name;\r\n        uint age;\r\n    }\r\n\r\n    mapping(address => User) public users;\r\n\r\n    function addUser(string memory _name, uint _age) public {\r\n        users[msg.sender] = User(_name, _age);\r\n    }\r\n}",
+        "file": "test64.sol"
+      }
+    }
   }
 }
