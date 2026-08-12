@@ -1,0 +1,76 @@
+{
+	"compiler": {
+		"version": "0.8.34+commit.80d5c536"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"name": "resetUser",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "user",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "age",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "active",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"test67.sol": "DeleteStruct"
+		},
+		"evmVersion": "osaka",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"test67.sol": {
+			"keccak256": "0xc3788c9dbd2aa9e91b646cc6dec8c4aa387c15bae33ab49157433d424865d11f",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://31bbf555807fc2e472e56063d6817e4858a3ee585b640ff2a3888c78341a8f81",
+				"dweb:/ipfs/QmRNa6n2Xt2iTvx1KuZ1pFSAJYzb36kXYXg8kqdW4XF3pF"
+			]
+		}
+	},
+	"version": 1
+}

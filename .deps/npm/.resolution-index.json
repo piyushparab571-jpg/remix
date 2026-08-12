@@ -62,5 +62,13 @@
         "file": "test66.sol"
       }
     }
+  },
+  "test67.sol": {
+    "__sources__": {
+      "test67.sol": {
+        "content": "// SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.20;\r\n\r\ncontract DeleteStruct {\r\n    struct User {\r\n        string name;\r\n        uint age;\r\n        bool active;\r\n    }\r\n\r\n    User public user = User(\"Piyush\", 18, true);\r\n\r\n    function resetUser() public {\r\n        delete user;\r\n    }\r\n}",
+        "file": "test67.sol"
+      }
+    }
   }
 }
