@@ -86,5 +86,13 @@
         "file": "test69.sol"
       }
     }
+  },
+  "test70.sol": {
+    "__sources__": {
+      "test70.sol": {
+        "content": "// SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.20;\r\n\r\ncontract FieldAccess {\r\n    struct Student {\r\n        string name;\r\n        uint age;\r\n        uint marks;\r\n    }\r\n\r\n    Student public student = Student(\"Piyush\", 18, 85);\r\n\r\n    function getName() public view returns (string memory) {\r\n        return student.name;\r\n    }\r\n\r\n    function getAge() public view returns (uint) {\r\n        return student.age;\r\n    }\r\n\r\n    function getMarks() public view returns (uint) {\r\n        return student.marks;\r\n    }\r\n}",
+        "file": "test70.sol"
+      }
+    }
   }
 }
