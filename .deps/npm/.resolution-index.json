@@ -142,5 +142,13 @@
         "file": "test76.sol"
       }
     }
+  },
+  "test77.sol": {
+    "__sources__": {
+      "test77.sol": {
+        "content": "// SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.20;\r\n\r\ncontract SecurityGap {\r\n    address public owner;\r\n    uint public balance;\r\n\r\n    constructor() {\r\n        owner = msg.sender;\r\n    }\r\n\r\n    modifier onlyOwner() {\r\n        require(msg.sender == owner, \"Not owner\");\r\n        _;\r\n    }\r\n\r\n    function secureSet(uint _amount) public onlyOwner {\r\n        balance = _amount;\r\n    }\r\n\r\n    // Modifier intentionally removed\r\n    function insecureSet(uint _amount) public {\r\n        balance = _amount;\r\n    }\r\n}",
+        "file": "test77.sol"
+      }
+    }
   }
 }
