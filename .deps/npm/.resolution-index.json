@@ -110,5 +110,13 @@
         "file": "test72.sol"
       }
     }
+  },
+  "test73.sol": {
+    "__sources__": {
+      "test73.sol": {
+        "content": "// SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.20;\r\n\r\ncontract MultipleModifiers {\r\n    address public owner;\r\n    bool public active = true;\r\n\r\n    constructor() {\r\n        owner = msg.sender;\r\n    }\r\n\r\n    modifier onlyOwner() {\r\n        require(msg.sender == owner, \"Not owner\");\r\n        _;\r\n    }\r\n\r\n    modifier whenActive() {\r\n        require(active == true, \"Contract inactive\");\r\n        _;\r\n    }\r\n\r\n    function setValue(uint _value)\r\n        public\r\n        onlyOwner\r\n        whenActive\r\n    {\r\n        // Function body\r\n    }\r\n}",
+        "file": "test73.sol"
+      }
+    }
   }
 }
