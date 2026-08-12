@@ -150,5 +150,13 @@
         "file": "test77.sol"
       }
     }
+  },
+  "test78.sol": {
+    "__sources__": {
+      "test78.sol": {
+        "content": "// SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.20;\r\n\r\ncontract ParameterModifier {\r\n    modifier minimum(uint _amount) {\r\n        require(msg.value >= _amount, \"Insufficient ETH\");\r\n        _;\r\n    }\r\n\r\n    function deposit()\r\n        public\r\n        payable\r\n        minimum(1 ether)\r\n    {\r\n    }\r\n}",
+        "file": "test78.sol"
+      }
+    }
   }
 }
