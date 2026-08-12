@@ -118,5 +118,13 @@
         "file": "test73.sol"
       }
     }
+  },
+  "test74.sol": {
+    "__sources__": {
+      "test74.sol": {
+        "content": "// SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.20;\r\n\r\ncontract ModifierOrder {\r\n    address public owner;\r\n    bool public active = true;\r\n\r\n    constructor() {\r\n        owner = msg.sender;\r\n    }\r\n\r\n    modifier first() {\r\n        require(msg.sender == owner, \"First modifier failed\");\r\n        _;\r\n    }\r\n\r\n    modifier second() {\r\n        require(active, \"Second modifier failed\");\r\n        _;\r\n    }\r\n\r\n    function test()\r\n        public\r\n        first\r\n        second\r\n    {\r\n    }\r\n}",
+        "file": "test74.sol"
+      }
+    }
   }
 }
