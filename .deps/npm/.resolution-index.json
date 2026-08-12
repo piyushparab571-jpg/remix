@@ -166,5 +166,13 @@
         "file": "test79.sol"
       }
     }
+  },
+  "test80.sol": {
+    "__sources__": {
+      "test80.sol": {
+        "content": "// SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.20;\r\n\r\ncontract MisusedModifier {\r\n    address public owner;\r\n    uint public balance;\r\n\r\n    constructor() {\r\n        owner = msg.sender;\r\n    }\r\n\r\n    // Incorrect modifier\r\n    modifier onlyOwner() {\r\n        if (msg.sender != owner) {\r\n            _;\r\n        }\r\n    }\r\n\r\n    function withdraw() public onlyOwner {\r\n        balance = 0;\r\n    }\r\n}",
+        "file": "test80.sol"
+      }
+    }
   }
 }
