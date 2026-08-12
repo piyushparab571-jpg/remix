@@ -94,5 +94,13 @@
         "file": "test70.sol"
       }
     }
+  },
+  "test71.sol": {
+    "__sources__": {
+      "test71.sol": {
+        "content": "// SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.20;\r\n\r\ncontract OnlyOwner {\r\n    address public owner;\r\n\r\n    constructor() {\r\n        owner = msg.sender;\r\n    }\r\n\r\n    modifier onlyOwner() {\r\n        require(msg.sender == owner, \"Not the owner\");\r\n        _;\r\n    }\r\n\r\n    function secretFunction() public onlyOwner {\r\n        // Only owner can execute this\r\n    }\r\n}",
+        "file": "test71.sol"
+      }
+    }
   }
 }

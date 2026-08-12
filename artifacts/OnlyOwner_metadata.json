@@ -1,0 +1,71 @@
+{
+	"compiler": {
+		"version": "0.8.34+commit.80d5c536"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [],
+				"name": "owner",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "secretFunction",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"test71.sol": "OnlyOwner"
+		},
+		"evmVersion": "osaka",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"test71.sol": {
+			"keccak256": "0xc9c5b91289b10695dfc53ca030f886aaa6caa0e19973ca9492b6904392112839",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://f043fd6cb6d97a6b0eb08c329d6335756c048115dd46ccc38ec42fd61fe316b1",
+				"dweb:/ipfs/QmU4RJKJ8AjKrgaxGmDhwHhSQ7PXfqk9cpcssQXyKDcxXH"
+			]
+		}
+	},
+	"version": 1
+}
