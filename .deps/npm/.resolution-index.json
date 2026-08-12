@@ -158,5 +158,13 @@
         "file": "test78.sol"
       }
     }
+  },
+  "test79.sol": {
+    "__sources__": {
+      "test79.sol": {
+        "content": "// SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.20;\r\n\r\ncontract ModifierFlow {\r\n    uint public value;\r\n\r\n    modifier addBefore() {\r\n        value += 10;\r\n        _;\r\n    }\r\n\r\n    function update() public addBefore {\r\n        value += 20;\r\n    }\r\n}",
+        "file": "test79.sol"
+      }
+    }
   }
 }
