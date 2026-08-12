@@ -14,5 +14,13 @@
         "file": "test42.sol"
       }
     }
+  },
+  "test61.sol": {
+    "__sources__": {
+      "test61.sol": {
+        "content": "// SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.20;\r\n\r\ncontract StructExample {\r\n    struct Student {\r\n        string name;\r\n        uint age;\r\n        uint marks;\r\n        bool passed;\r\n    }\r\n\r\n    Student public student;\r\n}",
+        "file": "test61.sol"
+      }
+    }
   }
 }
