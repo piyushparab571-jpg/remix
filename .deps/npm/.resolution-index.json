@@ -238,5 +238,13 @@
         "file": "test88.sol"
       }
     }
+  },
+  "test89.sol": {
+    "__sources__": {
+      "test89.sol": {
+        "content": "//SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.20;\r\ncontract PayableFallback{\r\n    event ETHReceived(address sender, uint256 amount, bytes data);\r\n    fallback() external payable {\r\n        emit ETHReceived(msg.sender, msg.value, msg.data);\r\n    }\r\n}",
+        "file": "test89.sol"
+      }
+    }
   }
 }

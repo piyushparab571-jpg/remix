@@ -1,0 +1,75 @@
+{
+	"compiler": {
+		"version": "0.8.34+commit.80d5c536"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "sender",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "bytes",
+						"name": "data",
+						"type": "bytes"
+					}
+				],
+				"name": "ETHReceived",
+				"type": "event"
+			},
+			{
+				"stateMutability": "payable",
+				"type": "fallback"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"test89.sol": "PayableFallback"
+		},
+		"evmVersion": "osaka",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"test89.sol": {
+			"keccak256": "0x1044b86c34cb0f884084101b317969e7e1fd09db57b6ab30900c42ef30be4b1b",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://b20daa4e6827f6f1515e2f92431336606073a5079458bd96c5dc8b7ae5affd2a",
+				"dweb:/ipfs/QmZTp2ietkBpqdj5uupUgXcBruDcL8g2JRz2F4U8kqzvGQ"
+			]
+		}
+	},
+	"version": 1
+}
