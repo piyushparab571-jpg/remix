@@ -1,0 +1,62 @@
+{
+	"compiler": {
+		"version": "0.8.34+commit.80d5c536"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "bytes",
+						"name": "data",
+						"type": "bytes"
+					}
+				],
+				"name": "FallbackCalled",
+				"type": "event"
+			},
+			{
+				"stateMutability": "nonpayable",
+				"type": "fallback"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"test82.sol": "UnknownFunction"
+		},
+		"evmVersion": "osaka",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"test82.sol": {
+			"keccak256": "0x24d705441743791eb6e9cf2276c5dae541f68188055a581c4e3717f811e698d3",
+			"urls": [
+				"bzz-raw://a09483cc32564993888db98468ffe58c189b8defc184fa4c670eddb0c3b64f2f",
+				"dweb:/ipfs/QmWsJUjuMwHjaZHVX2BhZvzapo2wLw9uwLj51mZ7EFMCmx"
+			]
+		}
+	},
+	"version": 1
+}

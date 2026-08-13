@@ -182,5 +182,13 @@
         "file": "test81.sol"
       }
     }
+  },
+  "test82.sol": {
+    "__sources__": {
+      "test82.sol": {
+        "content": "//SPDX-License-identifier:MIT\r\npragma solidity ^0.8.20;\r\ncontract UnknownFunction {\r\n    event FallbackCalled(bytes data);\r\n    fallback() external {\r\n        emit FallbackCalled(msg.data);\r\n    }\r\n}",
+        "file": "test82.sol"
+      }
+    }
   }
 }
