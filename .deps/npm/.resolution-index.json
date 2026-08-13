@@ -222,5 +222,13 @@
         "file": "test86.sol"
       }
     }
+  },
+  "test87.sol": {
+    "__sources__": {
+      "test87.sol": {
+        "content": "//SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.20;\r\ncontract RandomCalldata{\r\n    event DataReceived(bytes data);\r\n    fallback() external{\r\n        emit DataReceived(msg.data);\r\n    }\r\n}",
+        "file": "test87.sol"
+      }
+    }
   }
 }

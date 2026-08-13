@@ -1,0 +1,63 @@
+{
+	"compiler": {
+		"version": "0.8.34+commit.80d5c536"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "bytes",
+						"name": "data",
+						"type": "bytes"
+					}
+				],
+				"name": "DataReceived",
+				"type": "event"
+			},
+			{
+				"stateMutability": "nonpayable",
+				"type": "fallback"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"test87.sol": "RandomCalldata"
+		},
+		"evmVersion": "osaka",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"test87.sol": {
+			"keccak256": "0xc5d756b4c920629e4fddb8ad356fcda7e267301a2a62deee52d76842cdcd53cf",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://f10e20daacce102ecb49b495853afe84d26d8849be74672ec389e733a759b688",
+				"dweb:/ipfs/QmXQHh4kMAkavuntb67TZVwrgL67yXD6vPSQCcgiqDuyHq"
+			]
+		}
+	},
+	"version": 1
+}
