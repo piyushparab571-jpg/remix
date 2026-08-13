@@ -1,0 +1,63 @@
+{
+	"compiler": {
+		"version": "0.8.34+commit.80d5c536"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "bytes",
+						"name": "data",
+						"type": "bytes"
+					}
+				],
+				"name": "FallbackCalled",
+				"type": "event"
+			},
+			{
+				"stateMutability": "nonpayable",
+				"type": "fallback"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"test90.sol": "NonPayableFallback"
+		},
+		"evmVersion": "osaka",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"test90.sol": {
+			"keccak256": "0x5c2ebd64e78910941ddff4dfc8da20cd5ea8a41bcec26fc5289045e894b0bfd7",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://c9ec6c06d813b42d08126c98d1611a006fc3912209031d2cd2954ff5c8f842f0",
+				"dweb:/ipfs/QmSMVYioYqYReHmbYTRmmjcYzmAoEheRcsY7BkrPhsD1mw"
+			]
+		}
+	},
+	"version": 1
+}
