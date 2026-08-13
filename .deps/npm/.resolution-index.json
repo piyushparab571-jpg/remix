@@ -214,5 +214,13 @@
         "file": "test85.sol"
       }
     }
+  },
+  "test86.sol": {
+    "__sources__": {
+      "test86.sol": {
+        "content": "//SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.20;\r\ncontract FallbackEvent {\r\n    event UnknownCall(\r\n        address sender,\r\n        uint256 value,\r\n        bytes data\r\n    );\r\n    fallback() external payable {\r\n        emit UnknownCall(msg.sender, msg.value, msg.data);\r\n    }\r\n}",
+        "file": "test86.sol"
+      }
+    }
   }
 }
