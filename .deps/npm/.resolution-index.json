@@ -190,5 +190,13 @@
         "file": "test82.sol"
       }
     }
+  },
+  "test83.sol": {
+    "__sources__": {
+      "test83.sol": {
+        "content": "// SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.20;\r\n\r\ncontract ReceiveAndFallback {\r\n    event Received(uint256 amount);\r\n    event FallbackCalled(bytes data);\r\n\r\n    receive() external payable {\r\n        emit Received(msg.value);\r\n    }\r\n\r\n    fallback() external payable {\r\n        emit FallbackCalled(msg.data);\r\n    }\r\n}",
+        "file": "test83.sol"
+      }
+    }
   }
 }
