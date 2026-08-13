@@ -206,5 +206,13 @@
         "file": "test84.sol"
       }
     }
+  },
+  "test85.sol": {
+    "__sources__": {
+      "test85.sol": {
+        "content": "//SPDX-License-Identifier:MIT\r\npragma solidity ^0.8.20;\r\ncontract NoFallback{\r\n    function hello() external pure returns (string memory) {\r\n        return \"Hello\";\r\n    }\r\n}",
+        "file": "test85.sol"
+      }
+    }
   }
 }
