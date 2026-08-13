@@ -1,0 +1,69 @@
+{
+	"compiler": {
+		"version": "0.8.34+commit.80d5c536"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "sender",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "ReceiveTriggered",
+				"type": "event"
+			},
+			{
+				"stateMutability": "payable",
+				"type": "receive"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"test88.sol": "EmptyCalldata"
+		},
+		"evmVersion": "osaka",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"test88.sol": {
+			"keccak256": "0xb8a980d9ec15a144de5b32a6b23d4cfacf677b98d9a57629e8f7bd752223de47",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://6bd06d80c8c8292c96435f6006931b9bb9477e9b109b10914f1a9d73b3cdfeb6",
+				"dweb:/ipfs/QmfCiY7cZ3U1tS98DWsv93odk1wx5GV2CroWLBeSb85Qvk"
+			]
+		}
+	},
+	"version": 1
+}

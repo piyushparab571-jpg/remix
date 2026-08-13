@@ -230,5 +230,13 @@
         "file": "test87.sol"
       }
     }
+  },
+  "test88.sol": {
+    "__sources__": {
+      "test88.sol": {
+        "content": "//SPDX-License-Identifier:MIT\r\npragma solidity ^0.8.20;\r\ncontract EmptyCalldata{\r\n    event ReceiveTriggered(address sender, uint256 amount);\r\n    receive() external payable {\r\n        emit ReceiveTriggered(msg.sender, msg.value);\r\n     }\r\n}",
+        "file": "test88.sol"
+      }
+    }
   }
 }
