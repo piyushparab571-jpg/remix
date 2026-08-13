@@ -174,5 +174,13 @@
         "file": "test80.sol"
       }
     }
+  },
+  "test81.sol": {
+    "__sources__": {
+      "test81.sol": {
+        "content": "//SPDX-License-Identifier:MIT\r\npragma solidity ^0.8.20;\r\ncontract ReceiveETH {\r\n    event Received(address sender, uint256 amount);\r\n    receive() external payable {\r\n        emit Received(msg.sender, msg.value);\r\n    }\r\n    function getBalance() external view returns (uint256) {\r\n        return address(this).balance;\r\n    }\r\n}",
+        "file": "test81.sol"
+      }
+    }
   }
 }
