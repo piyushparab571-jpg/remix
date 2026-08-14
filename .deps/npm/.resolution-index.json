@@ -302,5 +302,13 @@
         "file": "test96.sol"
       }
     }
+  },
+  "test97.sol": {
+    "__sources__": {
+      "test97.sol": {
+        "content": "// SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.20;\r\n\r\ncontract Practical97 {\r\n    address public owner;\r\n\r\n    constructor() payable {\r\n        owner = msg.sender;\r\n    }\r\n\r\n    function deposit() public payable {}\r\n\r\n    // INTENTIONALLY VULNERABLE\r\n    function withdraw() public {\r\n        payable(msg.sender).transfer(address(this).balance);\r\n    }\r\n\r\n    receive() external payable {}\r\n}",
+        "file": "test97.sol"
+      }
+    }
   }
 }
