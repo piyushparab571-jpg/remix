@@ -294,5 +294,13 @@
         "file": "test95.sol"
       }
     }
+  },
+  "test96.sol": {
+    "__sources__": {
+      "test96.sol": {
+        "content": "// SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.20;\r\n\r\ncontract Practical96 {\r\n    mapping(address => uint256) public balances;\r\n\r\n    function deposit() public payable {\r\n        balances[msg.sender] += msg.value;\r\n    }\r\n\r\n    function withdraw() public {\r\n        uint256 amount = balances[msg.sender];\r\n\r\n        require(amount > 0, \"No balance\");\r\n\r\n        // Interaction happens BEFORE state update\r\n        (bool success, ) = payable(msg.sender).call{value: amount}(\"\");\r\n        require(success, \"Transfer failed\");\r\n\r\n        // State update happens too late\r\n        balances[msg.sender] = 0;\r\n    }\r\n\r\n    receive() external payable {}\r\n}",
+        "file": "test96.sol"
+      }
+    }
   }
 }
