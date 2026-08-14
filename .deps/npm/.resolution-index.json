@@ -278,5 +278,13 @@
         "file": "test93.sol"
       }
     }
+  },
+  "test94.sol": {
+    "__sources__": {
+      "test94.sol": {
+        "content": "//SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.20;\r\ncontract Practicle94 {\r\n    address public owner;\r\n    uint256 public balance;\r\n    constructor() {\r\n        owner = msg.sender;\r\n    }\r\n    modifier onlyOwner(){\r\n        require(msg.sender == owner, \"Not the owner\");\r\n        _;\r\n    }\r\n    function deposit() public payable {\r\n        balance += msg.value;\r\n    }\r\n    function withdraw() public onlyOwner {\r\n        payable(owner).transfer(address(this).balance);\r\n        balance = 0;\r\n    }\r\n}",
+        "file": "test94.sol"
+      }
+    }
   }
 }
