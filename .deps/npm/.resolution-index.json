@@ -286,5 +286,13 @@
         "file": "test94.sol"
       }
     }
+  },
+  "test95.sol": {
+    "__sources__": {
+      "test95.sol": {
+        "content": "//SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.20;\r\ncontract Practicle955Secure {\r\n    address public owner;\r\n    constructor() {\r\n        owner = msg.sender;\r\n    }\r\n    function withdraw() public {\r\n        require(msg.sender == owner, \"Unauthorized\");\r\n        payable(msg.sender).transfer(address(this).balance);\r\n    }\r\n    receive() external payable {}\r\n}",
+        "file": "test95.sol"
+      }
+    }
   }
 }
