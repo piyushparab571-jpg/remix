@@ -254,5 +254,13 @@
         "file": "test90.sol"
       }
     }
+  },
+  "test91.sol": {
+    "__sources__": {
+      "test91.sol": {
+        "content": "//SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.20;\r\ncontract Practical91 {\r\n    uint256 public balance;\r\n    function deposite(uint256 amount) public {\r\n        balance += amount;\r\n    }\r\n    function withdraw(uint256 amount) public {\r\n        require(amount > 0, \"Amount must be greater than zero\");\r\n        require(amount <= balance, \"Insufficient balance\");\r\n\r\n        balance -= amount;\r\n    }\r\n    function setValue(uint256 value) public {\r\n        balance = value;\r\n    }\r\n}",
+        "file": "test91.sol"
+      }
+    }
   }
 }
