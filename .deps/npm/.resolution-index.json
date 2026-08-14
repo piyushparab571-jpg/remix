@@ -262,5 +262,13 @@
         "file": "test91.sol"
       }
     }
+  },
+  "test92.sol": {
+    "__sources__": {
+      "test92.sol": {
+        "content": "//SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.20;\r\ncontract Practicle92 {\r\n    uint256 public number;\r\n    function setNumber(uint256 _number) public {\r\n        number = -number;\r\n    }\r\n    function addOne() public {\r\n        number += 1;\r\n    }\r\n    function getMaxUint() public pure returns (uint256) {\r\n        return type(uint256).max;\r\n    }\r\n}",
+        "file": "test92.sol"
+      }
+    }
   }
 }
