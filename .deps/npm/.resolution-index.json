@@ -310,5 +310,13 @@
         "file": "test97.sol"
       }
     }
+  },
+  "test98.sol": {
+    "__sources__": {
+      "test98.sol": {
+        "content": "//SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.20;\r\ncontract ContractA {\r\n    address public lastCaller;\r\n    function recordCaller() publc {\r\n        lastCaller = msg.sender; \r\n    }\r\n    function getCaller() public view returns (address) {\r\n        return lastCaller;\r\n    }\r\n}\r\ninterface IContractA {\r\n    function recordCaller() external;\r\n}\r\n\r\ncontract ContractB {\r\n    function callContractA(address contractA) public {\r\n        IContractA(contractA).recordCaller();\r\n    }\r\n}",
+        "file": "test98.sol"
+      }
+    }
   }
 }
