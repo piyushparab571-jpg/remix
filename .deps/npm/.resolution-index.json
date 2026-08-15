@@ -326,5 +326,13 @@
         "file": "test99.sol"
       }
     }
+  },
+  "test100.sol": {
+    "__sources__": {
+      "test100.sol": {
+        "content": "// SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.20;\r\n\r\ncontract Practical100 {\r\n    address public owner;\r\n    mapping(address => uint256) public balances;\r\n\r\n    constructor() {\r\n        owner = msg.sender;\r\n    }\r\n\r\n    function deposit() public payable {\r\n        balances[msg.sender] += msg.value;\r\n    }\r\n\r\n    function withdraw(uint256 amount) public {\r\n        require(amount > 0, \"Zero amount\");\r\n        require(amount <= balances[msg.sender], \"Insufficient balance\");\r\n\r\n        balances[msg.sender] -= amount;\r\n\r\n        payable(msg.sender).transfer(amount);\r\n    }\r\n\r\n    function changeOwner(address newOwner) public {\r\n        require(msg.sender == owner, \"Not owner\");\r\n        require(newOwner != address(0), \"Invalid owner\");\r\n\r\n        owner = newOwner;\r\n    }\r\n\r\n    function emergencyWithdraw() public {\r\n        require(msg.sender == owner, \"Not owner\");\r\n\r\n        payable(owner).transfer(address(this).balance);\r\n    }\r\n\r\n    receive() external payable {}\r\n}",
+        "file": "test100.sol"
+      }
+    }
   }
 }
