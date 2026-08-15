@@ -318,5 +318,13 @@
         "file": "test98.sol"
       }
     }
+  },
+  "test99.sol": {
+    "__sources__": {
+      "test99.sol": {
+        "content": "//SPX-license-Identifier; MIT\r\npragma solidity ^0.8.20;\r\ncontract Practicle99 {\r\n    mapping(address => uint256) public balances;\r\n    function deposite() public payable {\r\n        balances[msg.sender] += msg.value;\r\n    }\r\n    function withdraw(uint256 amount) public {\r\n        require(amount > 0, \"Zero amount\");\r\n        require(amount <= balances[msg.sender], \"Insufficient balance\");\r\n        balances[msg.sender] -= amount;\r\n        payable(msg.sender).transfer(amount);\r\n    }\r\n    function transferBalance(address to, uint256 amount) public {\r\n        require(to != address(0).\"Zero address\");\r\n        require(amount <= balances[msg.sender],\" Insufficient balance\");\r\n        balances[msg.sender] -= amount;\r\n        balances[to] += amount; \r\n    }\r\n    function getBalance() public view returns (uint256) {\r\n        return balances[msg.sender];\r\n    }\r\n}",
+        "file": "test99.sol"
+      }
+    }
   }
 }
